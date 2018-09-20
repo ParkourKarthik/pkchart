@@ -1,4 +1,5 @@
 const path = require('path');
+const TSLintPlugin = require('tslint-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -18,5 +19,10 @@ module.exports = {
         filename: 'pkchart.js',
         path: path.resolve(__dirname, 'dist'),
         library: 'pkchart'
-    }
+    },
+    plugins: [
+        new TSLintPlugin({
+            files: ['./src/**/*.ts']
+        })
+    ]
 };
