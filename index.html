@@ -1,14 +1,33 @@
 <html>
 
 <head>
+    <script src="./dist/pkchart.js"></script>
+    <link rel="stylesheet" type="text/css" href="pkchart.css">
 </head>
 
 <body>
-    <div id="t" class="testclass"></div>
+    <div id="t" class="testclass">
+    </div>
 </body>
-<script src="./dist/pkchart.js"></script>
 <script>
-    var t = pkchart(document.getElementById('t'));
-    var tc = pkchart(document.getElementsByClassName('testclass'));
+    var params = {
+        config: {
+            chartType: 'Bar'
+        },
+        data: [{
+                XValue: 40,
+                YValue: 10,
+                Label: 'first'
+            },
+            {
+                XValue: 60,
+                YValue: 10,
+                Label: 'second'
+            }
+        ]
+    };
+    var t = pkchart(document.getElementById('t'), params);
+    // var tc = pkchart(document.getElementsByClassName('testclass'));
 </script>
+
 </html>
