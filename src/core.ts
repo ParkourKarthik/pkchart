@@ -22,9 +22,9 @@ class CoreClass {
 
     private initialize(container: HTMLElement, params: IPKParams): void {
         let chartElem: string = '<figure>' +
-            '<figcaption>{{FIGURE CAPTION}}</figcaption>' +
+            '<figcaption>' + params.config.caption + '</figcaption>' +
             '<svg class="chart" width="420" height="150" aria-labelledby="title desc" role="img">' +
-            '<title id="title">{{CHART TITLE}}</title>';
+            '<title id="title">' + params.config.title + '</title>';
         let rectY: number = 20;
         let txtY: number = rectY + 9;
         params.data.forEach((element) => {
@@ -95,6 +95,8 @@ interface IConfig {
     chartType: ChartType;
     animate?: boolean;
     colortype?: ColorType;
+    title?: string;
+    caption?: string;
 }
 
 interface IAxisValue {
