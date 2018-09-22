@@ -1,6 +1,15 @@
 figcaption {
   font-size: x-large;
   font-weight: bold;
+  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+title {
+  font-weight: bold
+}
+
+.pk-chart {
+  box-shadow: 0 0px 30px rgba(0, 0, 0, .5);
 }
 
 .bar {
