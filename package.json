@@ -8,7 +8,7 @@
         "autofix": "tslint --project . --fix",
         "build": "webpack",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "deploy": "gh-pages -d dist -b gh-pages"
+        "deploy": "npm run build && gh-pages -d dist -b gh-pages"
     },
     "repository": {
         "type": "git",
