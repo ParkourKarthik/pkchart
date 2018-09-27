@@ -1,4 +1,4 @@
-
+import { IPKParams } from "./common/pkchart";
 
 export type PKChart = (elem: HTMLElement, params: IPKParams) => Promise<any> | void;
 
@@ -48,40 +48,6 @@ class CoreClass {
         return doc.firstChild ? doc.firstChild : new Node();
     }
 
-}
-
-interface IPKParams {
-    config: IConfig;
-    data: IAxisValue[];
-}
-
-interface IAxisValues extends Array<IAxisValue> { }
-
-// more options to be added...
-interface IConfig {
-    chartType: ChartType;
-    animate?: boolean;
-    colortype?: ColorType;
-    title?: string;
-    caption?: string;
-}
-
-interface IAxisValue {
-    XValue: number;
-    YValue: number;
-    Label: string | null;
-}
-
-enum ChartType {
-    Bar,
-    Line,
-    Cylinder,
-    Pie,
-}
-
-enum ColorType {
-    Contrast,
-    Professional,
 }
 
 export default pkchart;
