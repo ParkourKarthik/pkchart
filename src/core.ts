@@ -1,16 +1,11 @@
-
+import { Util } from "./util";
 
 export type PKChart = (elem: HTMLElement, params: IPKParams) => Promise<any> | void;
 
 const pkchart: PKChart = (container: HTMLElement, params: IPKParams): Promise<any> | void => {
     // Prevent library to be run in Node env:
     if (typeof window === 'undefined') return;
-    // no real world use of the below promise for now.. (as it just adds a simple element)
-    // return new Promise<any>((resolve, reject) => {
-    //let promise = {resolve, reject};
     const cs = new CoreClass(container, params);
-    // Initialize(container, params);
-    // });
 };
 
 
@@ -48,6 +43,13 @@ class CoreClass {
         return doc.firstChild ? doc.firstChild : new Node();
     }
 
+    private getMaxofValues(axisValues: IAxisValue[]): number[] {
+        const maxVal: number[] | null = Util.getMax();
+        if (!maxVal)
+            console.log('No values to check for max value');
+        return maxVal as number[];
+    }
+
 }
 
 interface IPKParams {
@@ -55,7 +57,7 @@ interface IPKParams {
     data: IAxisValue[];
 }
 
-interface IAxisValues extends Array<IAxisValue> { }
+// interface IAxisValues extends Array<IAxisValue> { }
 
 // more options to be added...
 interface IConfig {
