@@ -50,39 +50,6 @@ class CoreClass {
 
 }
 
-
-
-const Initialize = (elem: HTMLElement, params: IPKParams): void => {
-    //since the library is meant to be used directly in js, it is better to check the types explicitly at runtime
-    if (!(elem instanceof HTMLElement)) {
-        console.log('Initialize:not a valid HTMLElement');
-        return;
-    }
-    //add a simple svg element
-    const svg: HTMLElement = document.createElement('svg');
-    svg.setAttribute('width', (420).toString());
-    svg.setAttribute('height', (150).toString());
-    svg.setAttribute('role', 'img');
-    for (let i = 0; i < Object.keys(params.data).length; i++) {
-        const g: HTMLElement = document.createElement('g');
-        const rect: HTMLElement = document.createElement('rect');
-        rect.setAttribute('width', (10 * params.data[i].XValue).toString());
-        rect.setAttribute('height', (20).toString());
-        rect.setAttribute('y', (i * 2 * 10).toString());
-        g.appendChild(rect);
-        const txt: HTMLElement = document.createElement('text');
-        txt.setAttribute('x', ((10 * params.data[i].XValue) + 1).toString());
-        txt.setAttribute('y', ((i * 2 * 10) + 8).toString());
-        txt.style.border = '1px solid';
-        txt.textContent = params.data[i].Label;
-        g.appendChild(txt);
-        svg.appendChild(g);
-    }
-    elem.appendChild(svg);
-
-};
-
-
 interface IPKParams {
     config: IConfig;
     data: IAxisValue[];
