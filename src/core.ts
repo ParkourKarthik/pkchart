@@ -1,4 +1,4 @@
-import { IPKParams } from "./common/pkchart";
+import { ChartType, IPKParams } from "./common/pkchart";
 
 export type PKChart = (elem: HTMLElement, params: IPKParams) => Promise<any> | void;
 
@@ -20,7 +20,29 @@ class CoreClass {
         this.initialize(container, params);
     }
 
+    
     private initialize(container: HTMLElement, params: IPKParams): void {
+        let chartElem: string;
+        // value comes as string and hence converting to enum..
+        const chartString: keyof typeof ChartType = params.config.chartType;
+        const chartType: ChartType =  ChartType[chartString];
+        switch (chartType) {
+            case ChartType.bar:
+                chartElem = this.initBarChart(params);
+                break;
+
+            default:
+                chartElem = '';
+                break;
+        }
+        container.innerHTML = chartElem;
+    }
+
+    /**
+     * Bar chart generations
+     * @param params parameters with values to define the bar chart
+     */
+    private initBarChart(params: IPKParams): string {
         let chartElem: string = '<figure>' +
             '<figcaption>' + params.config.caption + '</figcaption>' +
             '<svg class="pk-chart" width="420" height="150" aria-labelledby="title desc" role="img">' +
@@ -39,7 +61,7 @@ class CoreClass {
         chartElem = chartElem + '</svg>' +
             '</figure>';
         const chartNode: Node | null = this.convertToNodes(chartElem);
-        container.innerHTML = chartElem;
+        return chartElem;
     }
 
     private convertToNodes(xmlString: string): Node {
