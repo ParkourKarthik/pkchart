@@ -5,7 +5,7 @@ export interface IPKParams {
 
 // more options to be added...
 export interface IConfig {
-    chartType: ChartType;
+    chartType: any;
     animate?: boolean;
     colortype?: ColorType;
     title?: string;
@@ -19,10 +19,10 @@ export interface IAxisValue {
 }
 
 export enum ChartType {
-    Bar,
-    Line,
-    Cylinder,
-    Pie
+    bar,
+    line,
+    cylinder,
+    pie
 }
 
 export enum ColorType {
